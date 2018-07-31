@@ -1,0 +1,5 @@
+---
+# tasks file for testls
+
+- name: listing all the file
+  command: ls /root
