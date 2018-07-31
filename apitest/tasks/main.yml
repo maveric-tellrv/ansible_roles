@@ -1,0 +1,36 @@
+---
+
+
+- name: Install epel
+  yum:
+      name: epel-release
+      state: present
+      disable_gpg_check: yes
+
+- name: Install pip
+  yum:
+      name: python-pip
+      state: present
+      disable_gpg_check: yes
+
+- name: Install git
+  yum:
+      name: git
+      state: present
+      disable_gpg_check: yes
+
+- name: Create flask user
+  user:
+      name: flask
+      group: root
+      createhome: yes
+      home: "/app"
+
+- name: clone git
+  command: git clone https://github.com/maveric-tellrv/apitest.git
+  
+     
+
+- name: Install Python dependencies
+  pip:
+      requirements: /apitest/requirement.txt
